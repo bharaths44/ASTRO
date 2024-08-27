@@ -1,0 +1,4 @@
+lightgbm==4.5.0
+numpy==2.0.2
+pandas==2.2.2
+plotly==5.23.0
