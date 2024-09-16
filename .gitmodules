@@ -1,3 +1,4 @@
-[submodule "Server"]
-	path = Server
+[submodule "ML-Server"]
+	path = ML-Server
 	url = https://github.com/bharaths44/ASTRO-ML-Server.git
+[submodule "Frontend"]
