@@ -1,6 +1,8 @@
 [submodule "astro-ML-Server"]
 	path=astro-ML-Server
 	url=https://github.com/bharaths44/ASTRO-ML-Server.git
+	branch =main
 [submodule "astro-flutter"]
 	path=astro-flutter
 	url=https://github.com/bharaths44/ASTRO-flutter.git
+	branch =main
