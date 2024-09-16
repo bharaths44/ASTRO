@@ -1,5 +1,5 @@
-[submodule "ML-Server"]
-	path = ML-Server
+[submodule "astro-ML-Server"]
+	path = astro-ML-Server
 	url = https://github.com/bharaths44/ASTRO-ML-Server.git
 [submodule "astro-flutter"]
 	path = astro-flutter
