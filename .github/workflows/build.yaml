@@ -28,10 +28,6 @@ jobs:
         run: flutter pub get
         working-directory: frontend
 
-      # - name: Run Flutter Tests
-      #   run: flutter test
-      #   working-directory: frontend
-
       - name: Build Flutter APK
         run: flutter build apk --release
         working-directory: frontend
@@ -43,7 +39,6 @@ jobs:
           path: frontend/build/app/outputs/flutter-apk/app-release.apk
 
   build_and_publish_docker:
-    needs: build_flutter
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -61,6 +56,35 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t ghcr.io/astro-server/backend:latest .
-          docker push ghcr.io/astro-server/backend:latest
+          TAG=${GITHUB_REF#refs/tags/}
+          docker build -t ghcr.io/${{ github.repository }}/backend:$TAG .
+          docker push ghcr.io/${{ github.repository }}/backend:$TAG
         working-directory: backend
+
+  create_release:
+    needs: [build_flutter , build_and_publish_docker]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: frontend/build/app/outputs/flutter-apk/app-release.apk
+          asset_name: app-release.apk
+          asset_content_type: application/vnd.android.package-archive
