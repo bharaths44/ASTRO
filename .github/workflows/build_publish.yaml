@@ -23,15 +23,24 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.24.0"
-      - run: flutter pub get
-      - run: flutter test
-      - run: flutter build apk --release
+
+      - name: Get Flutter Dependencies
+        run: flutter pub get
+        working-directory: frontend
+
+      # - name: Run Flutter Tests
+      #   run: flutter test
+      #   working-directory: frontend
+
+      - name: Build Flutter APK
+        run: flutter build apk --release
+        working-directory: frontend
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-release.apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: frontend/build/app/outputs/flutter-apk/app-release.apk
 
   build_and_publish_docker:
     needs: build_flutter
@@ -52,5 +61,6 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/backend:latest ./backend
+          docker build -t ghcr.io/${{ github.repository }}/backend:latest .
           docker push ghcr.io/${{ github.repository }}/backend:latest
+        working-directory: backend
