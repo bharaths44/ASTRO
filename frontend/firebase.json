@@ -1,0 +1,31 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "astro-feb60",
+                    "appId": "1:1037689016305:android:ff45d26f55eaf671327e50",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "ios": {
+                "default": {
+                    "projectId": "astro-feb60",
+                    "appId": "1:1037689016305:ios:8844fc196f1ee273327e50",
+                    "uploadDebugSymbols": false,
+                    "fileOutput": "ios/Runner/GoogleService-Info.plist"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "astro-feb60",
+                    "configurations": {
+                        "android": "1:1037689016305:android:ff45d26f55eaf671327e50",
+                        "ios": "1:1037689016305:ios:8844fc196f1ee273327e50",
+                        "web": "1:1037689016305:web:e8a2e522b56d8c36327e50"
+                    }
+                }
+            }
+        }
+    }
+}

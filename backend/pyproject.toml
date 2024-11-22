@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "astro-backend"
+version = "1.0.0"
+description = ""
+authors = ["bharaths44 <bharathsatheesan@gmail.com>"]
+readme = "README.md"
+package-mode = false 
+
+[tool.poetry.dependencies]
+python = ">=3.9,<=3.12"
+neuralprophet = "^0.9.0"
+python-multipart = "^0.0.12"
+fastapi = {extras = ["standard"], version = "^0.115.3"}
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+flake8 = "^7.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
