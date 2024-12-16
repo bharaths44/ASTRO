@@ -1,0 +1,9 @@
+.DS_Store
+dotenv.env
+response.json
+.venv
+.vscode
+app/__pycache__
+lightning_logs
+app/routes/__pycache__
+app/services/prediction/__pycache__
