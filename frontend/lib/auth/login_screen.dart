@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logger/logger.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -8,6 +9,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final providers = [EmailAuthProvider()];
+    final logger = Logger();
 
     return Scaffold(
       appBar: AppBar(
@@ -16,20 +18,24 @@ class LoginScreen extends StatelessWidget {
       ),
       body: SignInScreen(
         providers: providers,
+        showPasswordVisibilityToggle: true,
+        showAuthActionSwitch: true,
         actions: [
           AuthStateChangeAction<SignedIn>((context, state) {
-            context.go('/home');
+            if (!state.user!.emailVerified) {
+              logger.i('User is not verified');
+              context.go('/auth/signup');
+            } else {
+              logger.i('User is verified');
+              context.go('/auth/signup');
+            }
           }),
           AuthStateChangeAction<UserCreated>((context, state) {
-            context.go('/home');
+            logger.i('User is not verified');
+            context.go('/auth/email-verify');
           }),
           AuthStateChangeAction<CredentialLinked>((context, state) {
             context.go('/home');
-          }),
-          AuthStateChangeAction<AuthFailed>((context, state) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Sign in failed: ${state.exception}')),
-            );
           }),
         ],
       ),

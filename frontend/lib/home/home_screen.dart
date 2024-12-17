@@ -1,4 +1,7 @@
+import 'package:astro/auth/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,8 +18,9 @@ class HomeScreenState extends State<HomeScreen> {
         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
     Text('Search Page',
         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-    Text('Profile Page',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+    // Text('Profile Page',
+    //     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+    ProfilePage(),
   ];
 
   @override
@@ -30,6 +34,17 @@ class HomeScreenState extends State<HomeScreen> {
                 size: MediaQuery.of(context).size.width * 0.1),
             onPressed: () {
               // Handle the profile icon click here
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              if (context.mounted) {
+                context.go('/auth');
+              } else {
+                return;
+              }
             },
           ),
         ],
