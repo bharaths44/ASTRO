@@ -1,9 +1,10 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:astro/auth/login/bloc/login_bloc.dart';
 import 'package:astro/auth/signup/bloc/signup_bloc.dart';
 import 'package:astro/core/theme/text_theme.dart';
 import 'package:astro/core/theme/theme.dart';
 import 'package:astro/data_upload/bloc/file_upload_bloc.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';

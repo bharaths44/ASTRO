@@ -7,14 +7,9 @@ plugins {
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
 }
-
-def localProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
-if (localPropertiesFile.exists()) {
-    localPropertiesFile.withInputStream { stream ->
-        localProperties.load(stream)
-    }
-}
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream()) 
+def mapsKey = properties.getProperty('maps.writeKey')
 
 android {
     namespace = "com.astro.app"
@@ -39,10 +34,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-        manifestPlaceholders = [
-            GMS_API_KEY: localProperties['GMS_API_KEY'],
-            applicationName: "com.astro.app.MainApplication" 
-        ]
+        manifestPlaceholders += [mapsKey: mapsKey]
     }
 
     buildTypes {
