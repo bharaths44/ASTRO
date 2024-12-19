@@ -177,7 +177,7 @@ class SignUpPageState extends State<SignUpPage> {
                                 ),
                                 LoginTextField(
                                   controller: _lastNameController,
-                                  labelText: 'Last Name',
+                                  labelText: 'LAST NAME',
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'This field cannot be empty';

@@ -33,19 +33,23 @@ Future<void> saveDetails({
       middleName: middleNameController.text,
       lastName: lastNameController.text,
       shopName: shopNameController.text,
-      shopLocation:
-          '${buildingController.text}, ${roadController.text}, ${landmarkController.text}, ${districtController.text}, ${stateController.text}, ${pincodeController.text}',
+      building: buildingController.text,
+      road: roadController.text,
+      landmark: landmarkController.text,
+      district: districtController.text,
+      state: stateController.text,
+      pincode: pincodeController.text,
       latitude: selectedLocation?.latitude ?? 0.0,
       longitude: selectedLocation?.longitude ?? 0.0,
     );
 
     await FirebaseFirestore.instance
         .collection('users')
-        .doc(userModel.userId)
-        .set(userModel.toFirestore());
+        .doc(user.uid)
+        .set(userModel.toMap());
 
     if (context.mounted) {
-      context.go('/home');
+      context.go("/home");
     }
   }
 }

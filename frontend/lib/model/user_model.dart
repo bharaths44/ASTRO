@@ -6,7 +6,12 @@ class UserModel {
   final String middleName;
   final String lastName;
   final String shopName;
-  final String shopLocation;
+  final String building;
+  final String road;
+  final String landmark;
+  final String district;
+  final String state;
+  final String pincode;
   final double latitude;
   final double longitude;
 
@@ -16,7 +21,12 @@ class UserModel {
     required this.middleName,
     required this.lastName,
     required this.shopName,
-    required this.shopLocation,
+    required this.building,
+    required this.road,
+    required this.landmark,
+    required this.district,
+    required this.state,
+    required this.pincode,
     required this.latitude,
     required this.longitude,
   });
@@ -28,7 +38,12 @@ class UserModel {
       'middleName': middleName,
       'lastName': lastName,
       'shopName': shopName,
-      'shopLocation': shopLocation,
+      'building': building,
+      'road': road,
+      'landmark': landmark,
+      'district': district,
+      'state': state,
+      'pincode': pincode,
       'latitude': latitude,
       'longitude': longitude,
     };
@@ -41,7 +56,12 @@ class UserModel {
       middleName: map['middleName'],
       lastName: map['lastName'],
       shopName: map['shopName'],
-      shopLocation: map['shopLocation'],
+      building: map['building'],
+      road: map['road'],
+      landmark: map['landmark'],
+      district: map['district'],
+      state: map['state'],
+      pincode: map['pincode'],
       latitude: map['latitude'],
       longitude: map['longitude'],
     );
@@ -58,7 +78,12 @@ class UserModel {
       middleName: data?['middleName'],
       lastName: data?['lastName'],
       shopName: data?['shopName'],
-      shopLocation: data?['shopLocation'],
+      building: data?['building'],
+      road: data?['road'],
+      landmark: data?['landmark'],
+      district: data?['district'],
+      state: data?['state'],
+      pincode: data?['pincode'],
       latitude: data?['latitude'],
       longitude: data?['longitude'],
     );
@@ -71,7 +96,12 @@ class UserModel {
       'middleName': middleName,
       'lastName': lastName,
       'shopName': shopName,
-      'shopLocation': shopLocation,
+      'building': building,
+      'road': road,
+      'landmark': landmark,
+      'district': district,
+      'state': state,
+      'pincode': pincode,
       'latitude': latitude,
       'longitude': longitude,
     };
@@ -84,7 +114,12 @@ class UserModel {
       middleName: json['middleName'],
       lastName: json['lastName'],
       shopName: json['shopName'],
-      shopLocation: json['shopLocation'],
+      building: json['building'],
+      road: json['road'],
+      landmark: json['landmark'],
+      district: json['district'],
+      state: json['state'],
+      pincode: json['pincode'],
       latitude: json['latitude'],
       longitude: json['longitude'],
     );
@@ -97,7 +132,12 @@ class UserModel {
       'middleName': middleName,
       'lastName': lastName,
       'shopName': shopName,
-      'shopLocation': shopLocation,
+      'building': building,
+      'road': road,
+      'landmark': landmark,
+      'district': district,
+      'state': state,
+      'pincode': pincode,
       'latitude': latitude,
       'longitude': longitude,
     };

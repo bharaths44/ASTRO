@@ -1,4 +1,4 @@
-import 'package:astro/auth/profile_page.dart';
+import 'package:astro/auth/edit_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
@@ -20,7 +20,7 @@ class HomeScreenState extends State<HomeScreen> {
         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
     // Text('Profile Page',
     //     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-    ProfilePage(),
+    EditProfilePage(),
   ];
 
   @override
@@ -33,7 +33,7 @@ class HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.account_circle,
                 size: MediaQuery.of(context).size.width * 0.1),
             onPressed: () {
-              // Handle the profile icon click here
+              context.go('/home/profile');
             },
           ),
           IconButton(

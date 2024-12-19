@@ -1,6 +1,6 @@
 import 'package:astro/auth/email_verify_screen.dart';
 import 'package:astro/auth/login_screen.dart';
-import 'package:astro/auth/profile_page.dart';
+import 'package:astro/auth/edit_profile_page.dart';
 
 import 'package:astro/auth/signup_page.dart';
 import 'package:astro/home/home_screen.dart';
@@ -35,7 +35,7 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/home/profile',
-      builder: (context, state) => ProfilePage(),
+      builder: (context, state) => EditProfilePage(),
     ),
   ],
 );
